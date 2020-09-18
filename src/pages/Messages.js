@@ -9,7 +9,7 @@ class MessageFeed extends React.Component {
       <div className="Message">
         <Menu isAuthenticated={this.props.isAuthenticated} />
         <h2>Message</h2>
-        <CreateMessage isAuthenticated={this.props.isAuthenticated} />
+        <CreateMessage />
       </div>
     );
   }
