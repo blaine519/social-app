@@ -33,5 +33,8 @@ class DataService {
   registerUser(registrationData) {
     return this.client.post(this.url + "/users", registrationData);
   }
+  UserPicture(pictureData) {
+    return this.client.put(this.url + "/users", pictureData);
+  }
 }
 export default DataService;
