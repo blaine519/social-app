@@ -14,6 +14,13 @@ class DataService {
     return this.client.post(this.url + "/users", registrationData);
   }
 
+  messageLike(userData) {
+    return this.client.post(
+      "https://socialapp-api.herokuapp.com/likes",
+      userData
+    );
+  }
+
   getUsers() {
     return this.client.get(this.url + "/users");
   }
