@@ -34,7 +34,14 @@ class DataService {
     return this.client.post(this.url + "/users", registrationData);
   }
   UserPicture(pictureData) {
-    return this.client.put(this.url + "/users", pictureData);
+    return this.client.put(this.url + "/users/picture", pictureData);
+  }
+  getUsers() {
+    return this.client.get(this.url + "/users");
+  }
+
+  getMessage() {
+    return this.client.get(this.url + "/messages?limit=100");
   }
 }
 export default DataService;
