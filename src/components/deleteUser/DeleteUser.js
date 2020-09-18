@@ -2,6 +2,7 @@ import React from "react";
 
 import Menu from "../menu/Menu";
 import {userIsAuthenticated} from "../../redux/HOCs";
+import "./DeleteUser.css"
 
 class DeleteUser extends React.Component {
   render() {
