@@ -1,10 +1,10 @@
 import React from "react";
 //import Spinner from "react-spinkit";
 import { userIsAuthenticated } from "../../redux/HOCs";
-import "./MessageList.css";
+import "../likedMessages/LikedMessages.css";
 import DataService from "../../dataService";
 
-class MessageList extends React.Component {
+class LikedMessages extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,24 +30,24 @@ class MessageList extends React.Component {
   }
 
   componentDidMount() {
-    this.getListOfMessages();
+    this.mostLikedMessages();
   }
 
-  getListOfMessages() {
-    return this.client.getMessage().then((result) => {
+  mostLikedMessages() {
+    return this.client.mostLikedMessages().then((result) => {
       this.setState({
         messages: result.data.messages,
       });
       //console.log(result);
-      this.getListOfMessages();
+      this.mostLikedMessages();
     });
   }
 
   render() {
     //const { loading, error } = this.props;
     return (
-      <div className="pageWrap">
-        <h1>Messages</h1>
+      <div className="pageWraps">
+        <h1>Most Liked Messages</h1>
         <div className="Menu"></div>
         <div className="MessageList">
           <div className="hide">{JSON.stringify(this.state)}</div>
@@ -71,4 +71,4 @@ class MessageList extends React.Component {
   }
 }
 
-export default userIsAuthenticated(MessageList);
+export default userIsAuthenticated(LikedMessages);

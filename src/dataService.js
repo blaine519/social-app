@@ -4,6 +4,9 @@ import {
   handleJsonResponse,
   jsonHeaders,
 } from "./redux/actionCreators/constants";
+import { store } from "./redux";
+
+const { username, token } = store.getState().auth.login.result;
 
 class DataService {
   constructor(
@@ -30,18 +33,45 @@ class DataService {
         return result;
       });
   }
+  getUsername() {
+    const { username } = store.getState().auth.login.result;
+    return username;
+  }
+  getToken() {
+    const { token } = store.getState().auth.login.result;
+    return token;
+  }
   registerUser(registrationData) {
     return this.client.post(this.url + "/users", registrationData);
   }
-  UserPicture(pictureData) {
-    return this.client.put(this.url + "/users/picture", pictureData);
+
+  getUserPicture(userData) {
+    return this.client.get(this.url + "/users/" + userData + "/picture");
   }
+  userPicture(formData) {
+    const imageURL = this.url + `/users/${this.getUsername()}/picture`;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${(username, token)}`,
+      },
+    };
+    return this.client.put(imageURL, formData, config);
+  }
+  mostLikedMessages() {
+    return this.client.get(this.url + "/messages?limit=10");
+  }
+
   getUsers() {
     return this.client.get(this.url + "/users");
   }
 
+  deleteUsers() {
+    const deleteURL = this.url + `/users/${this.getUsername()}`;
+    return this.client.delete(deleteURL);
+  }
+
   getMessage() {
-    return this.client.get(this.url + "/messages?limit=100");
+    return this.client.get(this.url + "/messages?limit=15");
   }
 }
 export default DataService;
