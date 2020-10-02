@@ -72,7 +72,7 @@ class SetPicture extends React.Component {
               width={200}
             />
           </div>
-          <button onClick={this.handlePicture}>Submit</button>
+          {/* <button onClick={this.handlePicture}>Submit</button> */}
         </form>
         {/* {loading && <Spinner name="circle" color="blue" />} */}
         {/* {error && <p style={{ color: "red" }}>{error.message}</p>} */}

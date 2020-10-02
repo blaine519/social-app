@@ -6,7 +6,7 @@ import {
 } from "./redux/actionCreators/constants";
 import { store } from "./redux";
 
-const { username, token } = store.getState().auth.login.result;
+// const { username, token } = store.getState().auth.login.result;
 
 class DataService {
   constructor(
@@ -52,13 +52,13 @@ class DataService {
     const imageURL = this.url + `/users/${this.getUsername()}/picture`;
     const config = {
       headers: {
-        Authorization: `Bearer ${(username, token)}`,
+        Authorization: `Bearer ${this.getToken()}`,
       },
     };
     return this.client.put(imageURL, formData, config);
   }
   mostLikedMessages() {
-    return this.client.get(this.url + "/messages?limit=10");
+    return this.client.get(this.url + "/messages?limit=15");
   }
 
   getUsers() {

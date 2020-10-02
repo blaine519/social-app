@@ -7,17 +7,15 @@ class DeleteUser extends React.Component {
     super(props);
     this.state = {
       username: "",
-      password: "",
     };
   }
 
-  handleDelete = (e) => {
-    e.preventDefault();
+  handleDelete = () => {
     this.client.deleteUsers(this.state).then((result) => {
       console.log(result.data);
-    });
-    this.client.deleteUsers(this.state).then((result) => {
-      console.log(result.data);
+      this.setState({
+        username: result.data.username,
+      });
     });
   };
   handleChange = (e) => {
@@ -34,13 +32,6 @@ class DeleteUser extends React.Component {
               type="text"
               name="username"
               autoFocus
-              required
-              onChange={this.handleChange}
-            />
-            <label htmlFor="password">Password</label>
-            <input
-              type="password"
-              name="password"
               required
               onChange={this.handleChange}
             />
