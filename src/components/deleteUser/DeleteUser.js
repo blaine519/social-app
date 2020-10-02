@@ -1,6 +1,7 @@
 import React from "react";
 import { userIsAuthenticated } from "../../redux/HOCs";
 import "../deleteUser/DeleteUser.css";
+import DataService from "../../dataService";
 
 class DeleteUser extends React.Component {
   constructor(props) {
@@ -8,6 +9,7 @@ class DeleteUser extends React.Component {
     this.state = {
       username: "",
     };
+    this.client = new DataService();
   }
 
   handleDelete = () => {
@@ -17,28 +19,17 @@ class DeleteUser extends React.Component {
         username: result.data.username,
       });
     });
-  };
-  handleChange = (e) => {
-    this.setState({ [e.target.name]: e.target.value });
+    window.localStorage.removeItem("login");
+    window.location.reload();
   };
 
   render() {
     return (
       <div className="DeleteUser">
         <div>
-          <form id="registration-form">
-            <label htmlFor="username">Username</label>
-            <input
-              type="text"
-              name="username"
-              autoFocus
-              required
-              onChange={this.handleChange}
-            />
-            <button type="submit" onClick={this.handleDelete}>
-              Delete
-            </button>
-          </form>
+          <button type="submit" onClick={this.handleDelete}>
+            Delete
+          </button>
         </div>
       </div>
     );

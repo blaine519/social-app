@@ -42,7 +42,7 @@ class DataService {
     return token;
   }
   registerUser(registrationData) {
-    return this.client.post(this.url + "/users", registrationData);
+    return this.client.post(this.url + "/users/", registrationData);
   }
 
   getUserPicture(userData) {
@@ -67,7 +67,12 @@ class DataService {
 
   deleteUsers() {
     const deleteURL = this.url + `/users/${this.getUsername()}`;
-    return this.client.delete(deleteURL);
+    const config = {
+      headers: {
+        Authorization: `Bearer ${this.getToken()}`,
+      },
+    };
+    return this.client.delete(deleteURL, config);
   }
 
   getMessage() {
