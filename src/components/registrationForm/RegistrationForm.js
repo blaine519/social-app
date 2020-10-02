@@ -18,22 +18,15 @@ class RegistrationForm extends React.Component {
 
   handleRegistration = (e) => {
     e.preventDefault();
+    console.log(this.client);
     this.client.getUsers(this.state).then((result) => {
       console.log(result.data);
     });
-
-    // {
-    //   this.state.users.map((user) => console.log(user.username));
-    // }
 
     this.client.registerUser(this.state).then((result) => {
       console.log(result.data);
     });
   };
-
-  // componentDidMount() {
-  //   this.getUsers();
-  // }
 
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });

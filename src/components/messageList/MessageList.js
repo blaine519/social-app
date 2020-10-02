@@ -5,6 +5,7 @@ import "./MessageList.css";
 import DataService from "../../dataService";
 import Menu from "../menu/Menu";
 import Button from "react-bootstrap/Button";
+import CreateMessage from "../createMessage/CreateMessage";
 
 class MessageList extends React.Component {
   constructor(props) {
@@ -36,18 +37,17 @@ class MessageList extends React.Component {
       this.setState({
         messages: result.data.messages,
       });
+      console.log(this.state.messages);
     });
   }
 
   componentDidMount() {
     this.getListOfMessages();
-    this.messageLiked();
   }
 
-  messageLiked() {
-    console.log(this.client);
-    this.client.messageLike(this.state.messages.id).then((result) => {
-      console.log("hey");
+  messageLiked(messageId) {
+    this.client.messageLike(messageId).then((result) => {
+      this.getListOfMessages();
     });
   }
 
@@ -59,13 +59,19 @@ class MessageList extends React.Component {
           <Menu isAuthenticated={this.props.isAuthenticated} />
         </div>
         <div className="MessageList">
+          <CreateMessage />
           <div className="hide">{JSON.stringify(this.state)}</div>
           {this.state.messages.map((message) => (
             <div key={message.id} className="MessageWrap">
               <div className="UserName">User Name: {message.username}</div>
               <div className="MessageText">Message: {message.text}</div>
               <div className="MessageLikeButton">
-                <Button variant="primary" onClick={this.messageLiked}>
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    this.messageLiked(message.id);
+                  }}
+                >
                   Like
                 </Button>
               </div>
