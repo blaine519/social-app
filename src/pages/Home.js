@@ -22,8 +22,20 @@ class Home extends React.Component {
             alt="171x180"
             src="https://cdn.pixabay.com/photo/2018/05/18/21/01/rubber-ducks-3412065_960_720.jpg"
           />
-          <FigureCaption>
+          <FigureCaption className="Quack">
             <h1>Keep Your Ducks In A Row!</h1>
+          </FigureCaption>
+        </Figure>
+        <Figure>
+          <FigureImage
+            className="Elvis"
+            width={400}
+            height={400}
+            alt="171x180"
+            src="https://cdn.shopify.com/s/files/1/0604/4801/products/Elvis_1-min-min_1024x1024.jpg?v=1505344745"
+          />
+          <FigureCaption className="Hunk">
+            <h2>Hunk Hunk A burning Duck!</h2>
           </FigureCaption>
         </Figure>
         <LoginForm />
@@ -35,7 +47,7 @@ class Home extends React.Component {
             alt="171x180"
             src="http://cdn.shopify.com/s/files/1/1114/0068/products/104586_49a365e525e449af8b9f_1024x1024.jpg?v=1499461089"
           />
-          <FigureCaption>
+          <FigureCaption className="Donald">
             <h1>The Donald Trump Of Ducks!</h1>
           </FigureCaption>
         </Figure>

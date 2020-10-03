@@ -3,6 +3,7 @@ import { userIsAuthenticated } from "../../redux/HOCs";
 import "../deleteUser/DeleteUser.css";
 import DataService from "../../dataService";
 import Spinner from "react-bootstrap/Spinner";
+import Button from "react-bootstrap/Button";
 
 class DeleteUser extends React.Component {
   constructor(props) {
@@ -28,17 +29,10 @@ class DeleteUser extends React.Component {
     return (
       <div className="DeleteUser">
         <div>
-          <button variant="danger" type="submit" onClick={this.handleDelete}>
-            <Spinner
-              className="danger"
-              as="span"
-              animation="grow"
-              size="sm"
-              role="status"
-              aria-hidden="true"
-            />
+          <Button variant="danger" type="submit" onClick={this.handleDelete}>
+            <Spinner animation="grow" variant="warning" />
             Delete
-          </button>
+          </Button>
         </div>
       </div>
     );
