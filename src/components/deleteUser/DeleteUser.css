@@ -104,3 +104,6 @@ hr {
     width: 100%;
   }
 }
+.danger {
+  color: red;
+}

@@ -30,6 +30,7 @@ class DeleteUser extends React.Component {
         <div>
           <button variant="danger" type="submit" onClick={this.handleDelete}>
             <Spinner
+              className="danger"
               as="span"
               animation="grow"
               size="sm"
