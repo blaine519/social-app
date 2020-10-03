@@ -1,0 +1,17 @@
+.SuperDuck {
+  position: relative;
+  left: 270px;
+  bottom: 450px;
+  border-radius: 2rem;
+}
+.Plane {
+  position: relative;
+  left: 270px;
+  bottom: 450px;
+}
+body {
+  background-color: aqua;
+}
+.Trump {
+  border-radius: 2rem;
+}
