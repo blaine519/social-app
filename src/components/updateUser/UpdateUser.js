@@ -60,6 +60,7 @@ class UpdateUser extends React.Component {
     return (
       <div className="UpdateUser">
         <Form onSubmit={this.handleUpdateUserInfo}>
+          <h2>Update User</h2>
           <Form.Group>
             <Form.Label size="large" color="blue">
               Create new password:

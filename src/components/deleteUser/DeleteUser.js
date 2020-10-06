@@ -28,6 +28,7 @@ class DeleteUser extends React.Component {
   render() {
     return (
       <div className="DeleteUser">
+        <h2>Delete User</h2>
         <div>
           <Button variant="danger" type="submit" onClick={this.handleDelete}>
             <Spinner animation="grow" variant="warning" />

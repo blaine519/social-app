@@ -47,7 +47,7 @@ class LikedMessages extends React.Component {
     //const { loading, error } = this.props;
     return (
       <div className="pageWraps">
-        <h1>Most Liked Messages</h1>
+        <h1>Most Liked Quacks</h1>
         <div className="Menu"></div>
         <div className="MessageList">
           <div className="hide">{JSON.stringify(this.state)}</div>

@@ -7,6 +7,7 @@ import NotFound from "./pages/NotFound";
 import Messages from "./pages/Messages";
 import CreateUser from "./pages/CreateUser";
 import MessageList from "./components/messageList/MessageList";
+import Delete from "./pages/Delete";
 
 class App extends React.Component {
   render() {
@@ -17,6 +18,7 @@ class App extends React.Component {
         <Route exact path="/Messages" component={Messages} />
         <Route exact path="/CreateUser" component={CreateUser} />
         <Route exact path="/messagelist" component={MessageList} />
+        <Route exact path="/Delete" component={Delete} />
         <Route exact path="*" component={NotFound} />
       </Switch>
     );
