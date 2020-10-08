@@ -16,6 +16,7 @@ class DataService {
     this.url = url;
     this.client = client;
   }
+
   makeMessage(messageData) {
     console.log(this.url);
     const logIn = JSON.parse(localStorage.getItem("login"));
@@ -42,7 +43,31 @@ class DataService {
     return token;
   }
   registerUser(registrationData) {
-    return this.client.post(this.url + "/users/", registrationData);
+    return this.client.post(this.url + "/users", registrationData);
+  }
+
+  messageLike(messageId) {
+    return this.client.post(
+      this.url + "/likes",
+      { messageId: messageId },
+      {
+        headers: {
+          Authorization: `Bearer ${(this.getUserName(), this.getUserToken())}`,
+        },
+      }
+    );
+  }
+
+  getUserName() {
+    const { username } = store.getState().auth.login.result;
+
+    return username;
+  }
+
+  getUserToken() {
+    const { token } = store.getState().auth.login.result;
+
+    return token;
   }
 
   getUserPicture(userData) {
@@ -74,9 +99,8 @@ class DataService {
     };
     return this.client.delete(deleteURL, config);
   }
-
-  getMessage() {
-    return this.client.get(this.url + "/messages?limit=15");
+  getMessage(limit = 15) {
+    return this.client.get(this.url + `/messages?limit=${limit}`);
   }
 }
 export default DataService;

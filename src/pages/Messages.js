@@ -14,7 +14,7 @@ class MessageFeed extends React.Component {
     return (
       <div className="Message">
         <Menu isAuthenticated={this.props.isAuthenticated} />
-        <h2>Message</h2>
+        <h2>Quacks</h2>
         <CreateMessage />
         <Figure>
           <FigureImage

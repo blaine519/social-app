@@ -3,6 +3,8 @@ import React from "react";
 import { userIsAuthenticated } from "../../redux/HOCs";
 import "./MessageList.css";
 import DataService from "../../dataService";
+import Button from "react-bootstrap/Button";
+import CreateMessage from "../createMessage/CreateMessage";
 
 class MessageList extends React.Component {
   constructor(props) {
@@ -38,13 +40,26 @@ class MessageList extends React.Component {
       this.setState({
         messages: result.data.messages,
       });
-      //console.log(result);
-      this.getListOfMessages();
     });
   }
 
+  messageLiked(messageLike, messageId) {
+    let loginUsername = JSON.parse(window.localStorage.getItem("login"));
+
+    if (
+      messageLike.some(
+        (data) => data.username === loginUsername.result.username
+      )
+    ) {
+      this.getListOfMessages();
+    } else {
+      this.client.messageLike(messageId).then((result) => {
+        this.getListOfMessages();
+      });
+    }
+  }
+
   render() {
-    //const { loading, error } = this.props;
     return (
       <div className="pageWrap">
         <h1>Quacks</h1>
@@ -55,6 +70,17 @@ class MessageList extends React.Component {
             <div key={message.id} className="MessageWrap">
               <div className="UserName">User Name: {message.username}</div>
               <div className="MessageText">Message: {message.text}</div>
+              <div className="MessageLikeButton">
+                <Button
+                  variant="primary"
+                  onClick={() => {
+                    this.messageLiked(message.likes, message.id);
+                  }}
+                >
+                  Like
+                </Button>
+              </div>
+
               <div className="LikeWrap">
                 <div className="LikesTitle">Likes: {message.likes.length}</div>
                 {message.likes.map((like) => (
