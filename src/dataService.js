@@ -6,8 +6,6 @@ import {
   jsonHeaders,
 } from "./redux/actionCreators/constants";
 
-const { username, token } = store.getState().auth.login.result;
-
 class DataService {
   constructor(
     url = "https://socialapp-api.herokuapp.com",
@@ -43,15 +41,23 @@ class DataService {
       this.url + "/likes",
       { messageId: messageId },
       {
-        headers: { Authorization: `Bearer ${(username, token)}` },
+        headers: {
+          Authorization: `Bearer ${(this.getUserName(), this.getUserToken())}`,
+        },
       }
     );
   }
 
   getUserName() {
-    let username = store.getState().auth.login.result;
+    const { username } = store.getState().auth.login.result;
 
     return username;
+  }
+
+  getUserToken() {
+    const { token } = store.getState().auth.login.result;
+
+    return token;
   }
 
   getUsers() {

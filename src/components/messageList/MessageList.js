@@ -37,7 +37,6 @@ class MessageList extends React.Component {
       this.setState({
         messages: result.data.messages,
       });
-      console.log(this.state.messages);
     });
   }
 
@@ -45,14 +44,23 @@ class MessageList extends React.Component {
     this.getListOfMessages();
   }
 
-  messageLiked(messageId) {
-    this.client.messageLike(messageId).then((result) => {
+  messageLiked(messageLike, messageId) {
+    let loginUsername = JSON.parse(window.localStorage.getItem("login"));
+
+    if (
+      messageLike.some(
+        (data) => data.username === loginUsername.result.username
+      )
+    ) {
       this.getListOfMessages();
-    });
+    } else {
+      this.client.messageLike(messageId).then((result) => {
+        this.getListOfMessages();
+      });
+    }
   }
 
   render() {
-    //const { loading, error } = this.props;
     return (
       <div className="pageWrap">
         <div className="Menu">
@@ -69,12 +77,13 @@ class MessageList extends React.Component {
                 <Button
                   variant="primary"
                   onClick={() => {
-                    this.messageLiked(message.id);
+                    this.messageLiked(message.likes, message.id);
                   }}
                 >
                   Like
                 </Button>
               </div>
+
               <div className="LikeWrap">
                 <div className="LikesTitle">Likes: {message.likes.length}</div>
                 {message.likes.map((like) => (
