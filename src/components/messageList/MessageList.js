@@ -3,7 +3,6 @@ import React from "react";
 import { userIsAuthenticated } from "../../redux/HOCs";
 import "./MessageList.css";
 import DataService from "../../dataService";
-import Menu from "../menu/Menu";
 import Button from "react-bootstrap/Button";
 import CreateMessage from "../createMessage/CreateMessage";
 
@@ -32,16 +31,16 @@ class MessageList extends React.Component {
     this.client = new DataService();
   }
 
+  componentDidMount() {
+    this.getListOfMessages();
+  }
+
   getListOfMessages() {
     return this.client.getMessage().then((result) => {
       this.setState({
         messages: result.data.messages,
       });
     });
-  }
-
-  componentDidMount() {
-    this.getListOfMessages();
   }
 
   messageLiked(messageLike, messageId) {
@@ -63,11 +62,9 @@ class MessageList extends React.Component {
   render() {
     return (
       <div className="pageWrap">
-        <div className="Menu">
-          <Menu isAuthenticated={this.props.isAuthenticated} />
-        </div>
+        <h1>Quacks</h1>
+        <div className="Menu"></div>
         <div className="MessageList">
-          <CreateMessage />
           <div className="hide">{JSON.stringify(this.state)}</div>
           {this.state.messages.map((message) => (
             <div key={message.id} className="MessageWrap">

@@ -36,7 +36,7 @@ class CreateMessage extends React.Component {
     return (
       <div className="MessageForm">
         <form id="message-form" onSubmit={this.handleMessage}>
-          <label htmlFor="message">Message</label>
+          <label htmlFor="message"></label>
           <input
             type="text"
             name="text"

@@ -1,10 +1,12 @@
 //import the axios HTTP client to communicate with the API
 import axios from "axios";
-import { store } from "../src/redux";
 import {
   handleJsonResponse,
   jsonHeaders,
 } from "./redux/actionCreators/constants";
+import { store } from "./redux";
+
+// const { username, token } = store.getState().auth.login.result;
 
 class DataService {
   constructor(
@@ -31,6 +33,14 @@ class DataService {
         console.log(result);
         return result;
       });
+  }
+  getUsername() {
+    const { username } = store.getState().auth.login.result;
+    return username;
+  }
+  getToken() {
+    const { token } = store.getState().auth.login.result;
+    return token;
   }
   registerUser(registrationData) {
     return this.client.post(this.url + "/users", registrationData);
@@ -60,10 +70,35 @@ class DataService {
     return token;
   }
 
+  getUserPicture(userData) {
+    return this.client.get(this.url + "/users/" + userData + "/picture");
+  }
+  userPicture(formData) {
+    const imageURL = this.url + `/users/${this.getUsername()}/picture`;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${this.getToken()}`,
+      },
+    };
+    return this.client.put(imageURL, formData, config);
+  }
+  mostLikedMessages() {
+    return this.client.get(this.url + "/messages?limit=15");
+  }
+
   getUsers() {
     return this.client.get(this.url + "/users");
   }
 
+  deleteUsers() {
+    const deleteURL = this.url + `/users/${this.getUsername()}`;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${this.getToken()}`,
+      },
+    };
+    return this.client.delete(deleteURL, config);
+  }
   getMessage(limit = 15) {
     return this.client.get(this.url + `/messages?limit=${limit}`);
   }
