@@ -32,11 +32,24 @@ class Home extends React.Component {
                 <h1>Keep Your Ducks In A Row!</h1>
               </FigureCaption>
             </Figure>
+            <Figure>
+              <FigureImage
+                className="Elvis"
+                width={500}
+                height={500}
+                alt="171x180"
+                src="https://cdn.shopify.com/s/files/1/0604/4801/products/Elvis_1-min-min.jpg?v=1524977157"
+              />
+              <FigureCaption className="Hunk">
+                <h1>Hunk Hunk Burnin Ducky</h1>
+              </FigureCaption>
+            </Figure>
           </Col>
           <Col>
             <Link to="/CreateUser">
               <Button variant="primary">Create User</Button>
             </Link>
+            <h2>Login</h2>
             <LoginForm />
           </Col>
         </Row>
