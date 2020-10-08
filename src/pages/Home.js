@@ -7,64 +7,52 @@ import Figure from "react-bootstrap/Figure";
 import FigureImage from "react-bootstrap/FigureImage";
 import FigureCaption from "react-bootstrap/FigureCaption";
 import "./Home.css";
+import Button from "react-bootstrap/Button";
+import { Row } from "react-bootstrap";
+import { Col } from "react-bootstrap";
 class Home extends React.Component {
   render() {
     return (
       <div className="Home">
-        <Menu />
-        <Link to="/CreateUser">
-          <h3>Create User</h3>
-        </Link>
-        <h2>Keep It Squeaky Clean</h2>
-        <Figure>
-          <FigureImage
-            className="Ducks"
-            width={500}
-            height={500}
-            alt="171x180"
-            src="https://cdn.pixabay.com/photo/2018/05/18/21/01/rubber-ducks-3412065_960_720.jpg"
-          />
-          <FigureCaption className="Quack">
-            <h1>Keep Your Ducks In A Row!</h1>
-          </FigureCaption>
-        </Figure>
-        <Figure>
-          <FigureImage
-            className="Elvis"
-            width={400}
-            height={400}
-            alt="171x180"
-            src="https://cdn.shopify.com/s/files/1/0604/4801/products/Elvis_1-min-min_1024x1024.jpg?v=1505344745"
-          />
-          <FigureCaption className="Hunk">
-            <h2>Hunk Hunk A burning Duck!</h2>
-          </FigureCaption>
-        </Figure>
-        <LoginForm />
-        <Figure>
-          <FigureImage
-            className="Trump"
-            width={500}
-            height={500}
-            alt="171x180"
-            src="http://cdn.shopify.com/s/files/1/1114/0068/products/104586_49a365e525e449af8b9f_1024x1024.jpg?v=1499461089"
-          />
-          <FigureCaption className="Donald">
-            <h1>The Donald Trump Of Ducks!</h1>
-          </FigureCaption>
-        </Figure>
-        <Figure>
-          <FigureImage
-            className="SuperDuck"
-            width={500}
-            height={500}
-            alt="171x180"
-            src="https://amsterdamduckstore.com/wp-content/uploads/2019/08/Superhero-Rubber-Ducks-right-Amsterdam-Duck-Store.jpg"
-          />
-          <FigureCaption className="Plane">
-            <h1>Is It A Plane. Is It A Bird. No It's Super Ducky</h1>
-          </FigureCaption>
-        </Figure>
+        <Row>
+          <Menu />
+        </Row>
+        <Row>
+          <Col>
+            <h2>Keep It Squeaky Clean</h2>
+            <Figure>
+              <FigureImage
+                className="Ducks"
+                width={500}
+                height={500}
+                alt="171x180"
+                src="https://cdn.pixabay.com/photo/2018/05/18/21/01/rubber-ducks-3412065_960_720.jpg"
+              />
+              <FigureCaption className="Quack">
+                <h1>Keep Your Ducks In A Row!</h1>
+              </FigureCaption>
+            </Figure>
+            <Figure>
+              <FigureImage
+                className="Elvis"
+                width={500}
+                height={500}
+                alt="171x180"
+                src="https://cdn.shopify.com/s/files/1/0604/4801/products/Elvis_1-min-min.jpg?v=1524977157"
+              />
+              <FigureCaption className="Hunk">
+                <h1>Hunk Hunk Burnin Ducky</h1>
+              </FigureCaption>
+            </Figure>
+          </Col>
+          <Col>
+            <Link to="/CreateUser">
+              <Button variant="primary">Create User</Button>
+            </Link>
+            <h2>Login</h2>
+            <LoginForm />
+          </Col>
+        </Row>
       </div>
     );
   }
