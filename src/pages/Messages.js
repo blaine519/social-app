@@ -3,7 +3,7 @@ import CreateMessage from "../components/createMessage/CreateMessage";
 import Menu from "../components/menu/Menu";
 import MessageList from "../components/messageList/MessageList";
 import { userIsAuthenticated } from "../redux/HOCs";
-import LikedMessages from "../components/likedMessages/LikedMessages";
+// import LikedMessages from "../components/likedMessages/LikedMessages";
 import Figure from "react-bootstrap/Figure";
 import FigureImage from "react-bootstrap/FigureImage";
 import FigureCaption from "react-bootstrap/FigureCaption";
@@ -41,9 +41,7 @@ class MessageFeed extends React.Component {
           </FigureCaption>
         </Figure>
         <MessageList />
-        <div>
-          <LikedMessages />
-        </div>
+        <div>{/* <LikedMessages /> */}</div>
       </div>
     );
   }
