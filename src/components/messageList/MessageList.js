@@ -85,9 +85,14 @@ class MessageList extends React.Component {
               </div>
 
               <div className="LikeWrap">
-                <div className="LikesTitle">Likes: {message.likes.length}</div>
+                <div className="LikesTitle">
+                  Likes:{" "}
+                  <a href="#" onClick={this.showDiv}>
+                    {message.likes.length}
+                  </a>
+                </div>
                 {message.likes.map((like) => (
-                  <div key={like.id} className="LikesUserName">
+                  <div key={like.id} id="LikeUsers" className="LikesUserName">
                     {like.username}
                   </div>
                 ))}
