@@ -40,9 +40,9 @@ class MessageList extends React.Component {
       this.setState({
         messages: result.data.messages,
       });
+      this.getListOfMessages();
     });
   }
-
   messageLiked(messageLike, messageId) {
     let loginUsername = JSON.parse(window.localStorage.getItem("login"));
 
