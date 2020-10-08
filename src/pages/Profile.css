@@ -1,0 +1,22 @@
+.Rudolph {
+  border-radius: 2rem;
+  position: absolute;
+  left: 525px;
+  bottom: 600px;
+}
+.Red {
+  position: absolute;
+  left: 525px;
+  bottom: 550px;
+}
+.Prince {
+  border-radius: 2rem;
+  position: absolute;
+  left: 1050px;
+  bottom: 600px;
+}
+.Rain {
+  position: absolute;
+  left: 1050px;
+  bottom: 550px;
+}

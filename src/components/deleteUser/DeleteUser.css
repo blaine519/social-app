@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+/* Set a style for all buttons */
+button {
+  background-color: yellow;
+  color: green;
+  padding: 12px 21px;
+  margin: 9px 0;
+  border: none;
+  cursor: pointer;
+  width: 95%;
+  opacity: 0.9;
+}
+
+button:hover {
+  opacity: 1;
+}

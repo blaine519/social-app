@@ -1,0 +1,22 @@
+.Devil {
+  border-radius: 2rem;
+  position: absolute;
+  left: 525px;
+  bottom: 475px;
+}
+.Horns {
+  position: absolute;
+  left: 525px;
+  bottom: 400px;
+}
+.Frankenstein {
+  border-radius: 2rem;
+  position: absolute;
+  left: 1125px;
+  bottom: 475px;
+}
+.Purple {
+  position: absolute;
+  left: 1125px;
+  bottom: 400px;
+}

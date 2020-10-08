@@ -1,0 +1,49 @@
+.SuperDuck {
+  position: relative;
+  right: 625px;
+  border-radius: 2rem;
+}
+.Plane {
+  position: relative;
+  right: 625px;
+}
+.Ducks {
+  position: relative;
+  bottom: 75px;
+}
+.Quack {
+  position: relative;
+  bottom: 75px;
+}
+body {
+  background-color: aqua;
+}
+.Trump {
+  border-radius: 2rem;
+  position: relative;
+  left: 675px;
+  bottom: 175px;
+  animation: rotation 2s infinite linear;
+}
+.Donald {
+  position: relative;
+  left: 675px;
+  bottom: 175px;
+}
+.Hunk {
+  position: relative;
+  left: 750px;
+}
+.Elvis {
+  position: relative;
+  left: 750px;
+  border-radius: 2rem;
+}
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
