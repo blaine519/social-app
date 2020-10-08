@@ -1,22 +1,16 @@
 .Devil {
   border-radius: 2rem;
-  position: absolute;
-  left: 525px;
-  bottom: 475px;
+  margin: 10px;
 }
 .Horns {
-  position: absolute;
-  left: 525px;
-  bottom: 400px;
+  border-radius: 2rem;
+  margin: 10px;
 }
 .Frankenstein {
   border-radius: 2rem;
-  position: absolute;
-  left: 1125px;
-  bottom: 475px;
+  margin: 10px;
 }
 .Purple {
-  position: absolute;
-  left: 1125px;
-  bottom: 400px;
+  border-radius: 2rem;
+  margin: 10px;
 }

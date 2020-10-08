@@ -9,7 +9,6 @@
 }
 .Ducks {
   position: relative;
-  bottom: 75px;
 }
 .Quack {
   position: relative;
@@ -46,4 +45,7 @@ body {
   to {
     transform: rotate(359deg);
   }
+}
+.Menu {
+  width: 100%;
 }

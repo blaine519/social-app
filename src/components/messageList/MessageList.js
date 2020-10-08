@@ -4,7 +4,7 @@ import { userIsAuthenticated } from "../../redux/HOCs";
 import "./MessageList.css";
 import DataService from "../../dataService";
 import Button from "react-bootstrap/Button";
-import CreateMessage from "../createMessage/CreateMessage";
+// import CreateMessage from "../createMessage/CreateMessage";
 
 class MessageList extends React.Component {
   constructor(props) {
