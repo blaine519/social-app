@@ -1,0 +1,30 @@
+.Carousel {
+  border: solid yellow;
+  border-radius: 1rem;
+  border-width: 1rem;
+  margin: 10%;
+  position: relative;
+}
+.carousel-item img {
+  width: 33%;
+}
+.Duck {
+  position: relative;
+  border: solid yellow;
+  border-width: 1rem;
+  border-radius: 1rem;
+  margin-top: 20px;
+}
+.Rubber {
+  position: relative;
+  color: red;
+}
+h3 {
+  color: red;
+}
+h4 {
+  color: red;
+}
+h5 {
+  color: red;
+}

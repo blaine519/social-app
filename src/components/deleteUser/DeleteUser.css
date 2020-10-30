@@ -18,3 +18,15 @@ button {
 button:hover {
   opacity: 1;
 }
+.DeleteUser {
+  position: relative;
+}
+.Popover {
+  border-radius: 10px;
+}
+.Menu3 {
+  background: rgb(238, 223, 87);
+}
+.Content {
+  background-color: skyblue;
+}

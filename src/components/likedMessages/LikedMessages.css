@@ -3,20 +3,30 @@
 }
 .MessageWrap {
   border: 1px solid yellow;
+  background-color: #f1f1f1;
   border-radius: 5px;
-  padding: 5px 10px;
-  margin: 5px 10px;
+  padding: 10px;
+  margin: 10px 10px;
 }
 
 .LikeWrap {
-  border: 1px solid Red;
+  border: 2px solid Red;
   border-radius: 5px;
   padding: 5px 10px;
   margin: 5px 10px;
+  font-weight: bold;
 }
-.pageWraps {
-  width: 59rem;
-  position: absolute;
-  left: 950px;
-  top: 555px;
+
+.Avatar2 {
+  width: 10%;
+  box-shadow: 5px 5px 8px;
+  margin: 2px;
+}
+.UserName {
+  font-weight: bold;
+}
+.MessageText {
+  font-weight: bold;
+  word-break: keep-all;
+  word-wrap: break-word;
 }

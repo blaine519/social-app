@@ -57,7 +57,15 @@ class DataService {
       }
     );
   }
-
+  deleteLikes(likeID) {
+    const LikesURL = this.url + `/likes/likeId=${likeID}${this.getUsername()}`;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${this.getToken()}`,
+      },
+    };
+    return this.client.delete(LikesURL, config);
+  }
   getUserName() {
     const { username } = store.getState().auth.login.result;
 
@@ -82,14 +90,22 @@ class DataService {
     };
     return this.client.put(imageURL, formData, config);
   }
-  mostLikedMessages() {
-    return this.client.get(this.url + "/messages?limit=15");
+  mostLikedMessages(limit = 10) {
+    return this.client.get(this.url + `/messages?limit=${limit}`);
   }
 
   getUsers() {
     return this.client.get(this.url + "/users");
   }
-
+  getAllUsers() {
+    const UsersURL = this.url + `/users/${this.getUsername()}`;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${this.getToken()}`,
+      },
+    };
+    return this.client.get(UsersURL, config);
+  }
   deleteUsers() {
     const deleteURL = this.url + `/users/${this.getUsername()}`;
     const config = {
@@ -99,7 +115,19 @@ class DataService {
     };
     return this.client.delete(deleteURL, config);
   }
-  getMessage(limit = 15) {
+  deleteMessage() {
+    const deleteQuack = this.url + `/messages/${this.getUsername()}`;
+    const config = {
+      headers: {
+        Authorization: `Bearer ${this.getToken()}`,
+      },
+    };
+    return this.client.delete(deleteQuack, config);
+  }
+  getMessage(limit = 50) {
+    return this.client.get(this.url + `/messages?limit=${limit}`);
+  }
+  getUserMessage(limit = 15) {
     return this.client.get(this.url + `/messages?limit=${limit}`);
   }
 }

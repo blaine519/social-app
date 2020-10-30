@@ -1,5 +1,16 @@
 #message-form {
   display: flex;
   flex-direction: column;
-  max-width: 20em;
+}
+.emoji-picker-react {
+  width: 100% !important;
+}
+.CreateButton {
+  width: 100%;
+  border-radius: 10px;
+}
+.ResetButton {
+  width: 100%;
+  border-radius: 10px;
+  background-color: tomato;
 }

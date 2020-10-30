@@ -4,7 +4,9 @@ import { userIsAuthenticated } from "../../redux/HOCs";
 import "./MessageList.css";
 import DataService from "../../dataService";
 import Button from "react-bootstrap/Button";
-// import CreateMessage from "../createMessage/CreateMessage";
+import Form from "react-bootstrap/Form";
+import { Row } from "react-bootstrap";
+import InputGroup from "react-bootstrap/InputGroup";
 
 class MessageList extends React.Component {
   constructor(props) {
@@ -58,45 +60,111 @@ class MessageList extends React.Component {
       });
     }
   }
+  deleteMessage() {
+    return this.client.deleteMessage().then((result) => {
+      console.log(result.data);
+      this.getListOfMessages();
+    });
+  }
+  unlikeMessage() {
+    return this.client.deleteLikes().then((result) => {
+      console.log(result.data);
+      this.getListOfMessages();
+    });
+  }
 
   render() {
     return (
       <div className="pageWrap">
         <h1>Quacks</h1>
-        <div className="Menu"></div>
-        <div className="MessageList">
-          <div className="hide">{JSON.stringify(this.state)}</div>
-          {this.state.messages.map((message) => (
-            <div key={message.id} className="MessageWrap">
-              <div className="UserName">User Name: {message.username}</div>
-              <div className="MessageText">Message: {message.text}</div>
-              <div className="MessageLikeButton">
-                <Button
-                  variant="primary"
-                  onClick={() => {
-                    this.messageLiked(message.likes, message.id);
-                  }}
-                >
-                  Like
-                </Button>
-              </div>
+        <InputGroup>
+          <Form>
+            <Form.Group>
+              <Form.Label column lg="">
+                <Form.Text>
+                  <Row>
+                    <div className="Menu"></div>
+                    <div className="MessageList">
+                      <div className="hide">{JSON.stringify(this.state)}</div>
 
-              <div className="LikeWrap">
-                <div className="LikesTitle">
-                  Likes:{" "}
-                  <a href="#" onClick={this.showDiv}>
-                    {message.likes.length}
-                  </a>
-                </div>
-                {message.likes.map((like) => (
-                  <div key={like.id} id="LikeUsers" className="LikesUserName">
-                    {like.username}
-                  </div>
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
+                      {this.state.messages.map((message) => (
+                        <div key={message.id} className="MessageWrap">
+                          <div className="UserName">
+                            User Name: {message.username}
+                          </div>
+                          <img
+                            className="Avatar"
+                            src="https://thumbs.dreamstime.com/b/yellow-rubber-duck-icon-fun-bath-illustration-70823108.jpg"
+                            alt="Icon"
+                          ></img>
+                          <div className="MessageText">
+                            Message: {message.text}
+                          </div>
+                          <div>
+                            <Button
+                              className="MessageLikeButton"
+                              variant="primary"
+                              onClick={() => {
+                                this.messageLiked(message.likes, message.id);
+                              }}
+                            >
+                              <img
+                                className="BlueDuck"
+                                src="https://cdn.shopify.com/s/files/1/0604/4801/products/Blue_2.jpeg?v=1514845837"
+                              />
+                              Like
+                            </Button>
+                          </div>
+                          <div>
+                            <Button
+                              className="MessageUnlikeButton"
+                              variant="warning"
+                              onClick={() => {
+                                this.unlikeMessage();
+                              }}
+                            >
+                              <img className="" src="" />
+                              Unlike
+                            </Button>
+                          </div>
+                          <div>
+                            <Button
+                              className="DeleteButton"
+                              variant="danger"
+                              onClick={() => {
+                                this.deleteMessage(message.id);
+                              }}
+                            >
+                              Delete
+                            </Button>
+                          </div>
+
+                          <div className="LikeWrap">
+                            <div className="LikesTitle">
+                              Likes:{" "}
+                              <a href="#" onClick={this.showDiv}>
+                                {message.likes.length}
+                              </a>
+                            </div>
+                            {message.likes.map((like) => (
+                              <div
+                                key={like.id}
+                                id="LikeUsers"
+                                className="LikesUserName"
+                              >
+                                {like.username}
+                              </div>
+                            ))}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </Row>
+                </Form.Text>
+              </Form.Label>
+            </Form.Group>
+          </Form>
+        </InputGroup>
       </div>
     );
   }

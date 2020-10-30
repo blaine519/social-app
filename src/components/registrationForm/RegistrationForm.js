@@ -19,15 +19,18 @@ class RegistrationForm extends React.Component {
   handleRegistration = (e) => {
     e.preventDefault();
     console.log(this.client);
+    if (this.state.result === null) return;
     this.client.getUsers(this.state).then((result) => {
       console.log(result.data);
     });
 
     this.client.registerUser(this.state).then((result) => {
       console.log(result.data);
+      if (result.data.statusCode === 200) {
+        return "(You have successfully resigtered)";
+      }
     });
   };
-
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
@@ -59,7 +62,7 @@ class RegistrationForm extends React.Component {
             required
             onChange={this.handleChange}
           />
-          <button type="submit" disabled={loading}>
+          <button className="Register" type="submit" disabled={loading}>
             Login
           </button>
         </form>

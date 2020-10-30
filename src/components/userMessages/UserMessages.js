@@ -1,13 +1,14 @@
 import React from "react";
 //import Spinner from "react-spinkit";
 import { userIsAuthenticated } from "../../redux/HOCs";
-import "../likedMessages/LikedMessages.css";
+import "./UserMessages.css";
 import DataService from "../../dataService";
+import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import { Row } from "react-bootstrap";
 import InputGroup from "react-bootstrap/InputGroup";
 
-class LikedMessages extends React.Component {
+class UserMessages extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -37,10 +38,31 @@ class LikedMessages extends React.Component {
   }
 
   getListOfMessages() {
-    return this.client.mostLikedMessages().then((result) => {
+    return this.client.getUserMessage().then((result) => {
       this.setState({
         messages: result.data.messages,
       });
+      this.getListOfMessages();
+    });
+  }
+  messageLiked(messageLike, messageId) {
+    let loginUsername = JSON.parse(window.localStorage.getItem("login"));
+
+    if (
+      messageLike.some(
+        (data) => data.username === loginUsername.result.username
+      )
+    ) {
+      this.getListOfMessages();
+    } else {
+      this.client.messageLike(messageId).then((result) => {
+        this.getListOfMessages();
+      });
+    }
+  }
+  deleteMessage() {
+    return this.client.deleteMessage().then((result) => {
+      console.log(result.data);
       this.getListOfMessages();
     });
   }
@@ -48,7 +70,7 @@ class LikedMessages extends React.Component {
   render() {
     return (
       <div className="pageWrap">
-        <h1>Most Liked Quacks</h1>
+        <h1>Users Quacks</h1>
         <InputGroup>
           <Form>
             <Form.Group>
@@ -65,12 +87,38 @@ class LikedMessages extends React.Component {
                             User Name: {message.username}
                           </div>
                           <img
-                            className="Avatar2"
-                            src="https://www.shareicon.net/data/512x512/2015/10/18/658216_duck_512x512.png"
+                            className="Avatar"
+                            src="https://thumbs.dreamstime.com/b/yellow-rubber-duck-icon-fun-bath-illustration-70823108.jpg"
                             alt="Icon"
                           ></img>
                           <div className="MessageText">
                             Message: {message.text}
+                          </div>
+                          <div>
+                            <Button
+                              className="MessageLikeButton"
+                              variant="primary"
+                              onClick={() => {
+                                this.messageLiked(message.likes, message.id);
+                              }}
+                            >
+                              <img
+                                className="BlueDuck"
+                                src="https://cdn.shopify.com/s/files/1/0604/4801/products/Blue_2.jpeg?v=1514845837"
+                              />
+                              Like
+                            </Button>
+                          </div>
+                          <div>
+                            <Button
+                              className="DeleteButton"
+                              variant="danger"
+                              onClick={() => {
+                                this.deleteMessage(message.id);
+                              }}
+                            >
+                              Delete
+                            </Button>
                           </div>
 
                           <div className="LikeWrap">
@@ -104,4 +152,4 @@ class LikedMessages extends React.Component {
   }
 }
 
-export default userIsAuthenticated(LikedMessages);
+export default userIsAuthenticated(UserMessages);

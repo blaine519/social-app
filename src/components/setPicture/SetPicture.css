@@ -1,5 +1,11 @@
 #picture-form {
   display: flex;
   flex-direction: column;
-  max-width: 20em;
+}
+.Image {
+  box-shadow: 5px 5px 8px blue;
+  width: 95%;
+}
+.FallBack {
+  border-radius: 10px;
 }

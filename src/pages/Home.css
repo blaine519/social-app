@@ -3,32 +3,19 @@
 }
 .Quack {
   position: relative;
-  bottom: px;
 }
 body {
   background-color: aqua;
 }
-
-.Hunk {
-  position: relative;
-  left: 750px;
-  top: 100px;
-}
-.Elvis {
-  position: relative;
-  left: 750px;
-  top: 75px;
-  border-radius: 2rem;
-  animation: rotation 2s infinite linear;
-}
-@keyframes rotation {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(359deg);
-  }
-}
 .Menu {
   width: 100%;
+}
+.Login {
+  position: relative;
+}
+.Create {
+  position: relative;
+}
+.Squeaky {
+  position: relative;
 }

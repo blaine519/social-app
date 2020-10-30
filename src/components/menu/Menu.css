@@ -22,3 +22,7 @@ h1 {
   text-decoration: underline;
   cursor: pointer;
 }
+.Avatar4 {
+  width: 7%;
+  box-shadow: 5px 5px 8px red;
+}

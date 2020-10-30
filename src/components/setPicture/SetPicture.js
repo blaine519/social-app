@@ -3,6 +3,7 @@ import React from "react";
 import { userIsAuthenticated } from "../../redux/HOCs";
 import "./SetPicture.css";
 import DataService from "../../dataService";
+import Ducky from "../../components/image/Ducky.png";
 
 class SetPicture extends React.Component {
   constructor(props) {
@@ -38,7 +39,8 @@ class SetPicture extends React.Component {
   };
 
   setFallbackImage = (e) => {
-    e.target.src = "https://www.gravatar.com/avatar/?d=mp";
+    e.target.src =
+      "https://th.bing.com/th/id/OIP.d9nHd25GA6aiqgSJbPg_CgAAAA?pid=Api&rs=1";
   };
 
   handlePicture = (e) => {
@@ -49,6 +51,16 @@ class SetPicture extends React.Component {
         this.updatePicture();
       }
     });
+  };
+
+  resetFallBackImage = (e) => {
+    console.log("hi");
+    const file = Ducky;
+    console.log(file);
+    const formData = new FormData();
+    formData.append("picture", file);
+
+    this.setState({ formData }, this.handlePicture);
   };
 
   render() {
@@ -66,13 +78,15 @@ class SetPicture extends React.Component {
           />
           <div className="image-preview">
             <img
+              className="Image"
               alt="user"
               src={this.state.picture}
               onError={this.setFallbackImage}
-              width={200}
             />
           </div>
-          {/* <button onClick={this.handlePicture}>Submit</button> */}
+          <button className="FallBack" onClick={this.resetFallBackImage}>
+            Fall Back Image
+          </button>
         </form>
         {/* {loading && <Spinner name="circle" color="blue" />} */}
         {/* {error && <p style={{ color: "red" }}>{error.message}</p>} */}

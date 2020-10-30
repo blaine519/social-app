@@ -4,6 +4,7 @@ import { userIsAuthenticated } from "../../redux/HOCs";
 import "./CreateMessage.css";
 import DataService from "../../dataService";
 import Picker from "emoji-picker-react";
+import Button from "react-bootstrap/Button";
 
 class CreateMessage extends React.Component {
   constructor(props) {
@@ -30,13 +31,20 @@ class CreateMessage extends React.Component {
   handleChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
   };
+  handleReset = (event) => {
+    this.setState({
+      text: "",
+    });
+  };
 
   render() {
     const { loading, error } = this.props;
     return (
       <div className="MessageForm">
         <form id="message-form" onSubmit={this.handleMessage}>
-          <label htmlFor="message">Message</label>
+          <label htmlFor="message">
+            <h3>Quacks</h3>
+          </label>
           <input
             type="text"
             name="text"
@@ -46,11 +54,15 @@ class CreateMessage extends React.Component {
             value={this.state.text}
             ref={(element) => (this.inputElement = element)}
           />
-          <button type="submit" disabled={loading}>
+          <button className="CreateButton" type="submit" disabled={loading}>
             Submit
           </button>
+          <Button className="ResetButton" onClick={this.handleReset}>
+            Reset
+          </Button>
           <Picker onEmojiClick={this.onEmojiClick} />
         </form>
+
         {loading && <Spinner name="circle" color="blue" />}
         {error && <p style={{ color: "red" }}>{error.message}</p>}
       </div>
